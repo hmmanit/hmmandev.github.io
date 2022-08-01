@@ -1,8 +1,10 @@
 ---
-layout: page
-title: Elements
-image: assets/images/pic01.jpg
-nav-menu: true
+layout: about
+title: About
+image: assets/images/pic12.jpg
+nav-menu: false
+show_tile: false
+
 ---
 
 <!-- Main -->

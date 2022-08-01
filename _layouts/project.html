@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+{% include head.html %}
+
+<body>
+
+    {% include header.html %}
+
+
+<!-- Main -->
+<div id="main" class="alt">
+
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<a href="javascript:window.history.back();" class="button icon fa-long-arrow-left">     Projects</a>
+		<header class="major">
+			<h1>{{ page.title }}</h1>
+			<a href="{{ page.github_url }}" target="_blank" class="button special icon fa-github">    Git Hub</a>
+		</header>
+		{{ content }}
+	</div>
+</section>
+
+</div>
+
+    {% include footer.html %}
+
+</body>
+
+</html>

@@ -1,34 +1,35 @@
 # site settings
-title: Forty
-subtitle: by HTML5 UP
-email: youremailaddress@gmail.com
-description: A responsive site template designed by HTML5 Up<br /> and released under the Creative Commons.
-baseurl: "/forty-jekyll-theme" # the subpath of your site, e.g. /blog
+title: Man Ho
+subtitle: Android Developer
+email: hmman.ct@gmail.com
+description: I am an Android Developer.
+baseurl: "/man-hominh" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author:
-street_address: 1234 Somewhere Road
-city: Nashville
-state: TN
-zip_code: 55555
-country: United States of America
-phone: (716) 555-5555
+street_address: Phan Huy Ich, Go Vap District
+city: Ho Chi Minh City
+state: 
+zip_code: 70000
+country: Vietnam
+phone: (84) 862 670 250
 
 # homepage tiles
 tiles-source: pages # accepts "posts" or "pages"
-tiles-count: 6
+tiles-count: 4
 
 # social settings (key must match name of font awesome icon)
 # see https://fontawesome.com/icons?d=gallery&p=2&s=brands
 # Icons are not shown if value is empty
 # You need to restart jekyll for changes to have an effect
 socials:
-  GitHub: https://github.com/andrewbanchich
+  GitHub: https://github.com/homanad
+  Shopping-Cart: https://play.google.com/store/apps/dev?id=5223621777297846926
   GitLab:
-  Google-Plus: https://plus.google.com/u/0/+AndrewBanchich
+  Google-Plus:
   Instagram:
-  LinkedIn: https://www.linkedin.com/in/andrew-banchich-a4ba1195
-  Twitter: https://twitter.com/andrewbanchich
-  Facebook:
+  LinkedIn: https://www.linkedin.com/in/ho-minh-man-22153a1a8/
+  Twitter: 
+  Facebook: https://www.facebook.com/hmman.ad/
   Slack:
 
 # build settings
