@@ -1,9 +1,9 @@
 # site settings
-title: Man Ho Minh
+title: Man Ho
 subtitle: Android Developer
 email: hmman.ct@gmail.com
 description: I am an Android Developer.
-baseurl: "/forty-jekyll-theme" # the subpath of your site, e.g. /blog
+baseurl: "/man-hominh" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author:
 street_address: Phan Huy Ich, Go Vap District
