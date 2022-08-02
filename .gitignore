@@ -5,3 +5,5 @@ Gemfile.lock
 *.gem
 .jekyll-cache
 .idea/
+.bundle/config
+vendor/
