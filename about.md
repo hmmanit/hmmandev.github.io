@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: about
 title: About
 image: assets/images/pic12.jpg
 nav-menu: true

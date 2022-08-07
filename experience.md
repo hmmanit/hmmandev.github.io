@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: experience
 title: Work Experience
 description: 
 image: assets/images/pic09.jpg
