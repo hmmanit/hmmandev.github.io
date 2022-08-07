@@ -6,8 +6,87 @@ image: assets/images/pic09.jpg
 nav-menu: true
 ---
 
-Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.
-
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.
+<section id="two" class="spotlights">
+	<section>
+		<a href="generic.html" class="image">
+			<img src="{% link assets/images/pic_anyses.webp %}" alt="" data-position="center center" />
+		</a>
+		<div class="content">
+			<div class="inner">
+				<header class="major">
+					<h3>AnySES</h3>
+                    <h4>Android Team Leader</h4>
+				</header>
+                <h5>Project: Outsource projects & Company products</h5>
+				<p>
+                    Participating in projects on attendance, order management, site management,...
+                </p>
+				<ul class="actions">
+					<li><a href="generic.html" class="button">Read more</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section>
+		<a href="generic.html" class="image">
+			<img src="{% link assets/images/pic_rch.jpeg %}" alt="" data-position="top center" />
+		</a>
+		<div class="content">
+			<div class="inner">
+				<header class="major">
+					<h3>RCH Vietnam</h3>
+                    <h4>Android Developer</h4>
+				</header>
+                <h5>Project: POS application for RCH devices</h5>
+				<p>
+                    Applications for equipment manufactured by the company such as: POS machines, monitors, printers,...
+                </p>
+				<ul class="actions">
+					<li><a href="generic.html" class="button">Read more</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section>
+		<a href="generic.html" class="image">
+			<img src="{% link assets/images/pic_samsung.jpeg %}" alt="" data-position="25% 25%" />
+		</a>
+		<div class="content">
+			<div class="inner">
+				<header class="major">
+					<h3>Samsung Electronics</h3>
+                    <h4>Android Developer</h4>
+				</header>
+                <h5>Project: SmartThings – TV Plugin</h5>
+				<p>
+                    One of SmartThings sub-applications, developed to help users use and control the TV smarter and more convenient.
+                </p>
+				<ul class="actions">
+					<li><a href="generic.html" class="button">Read more</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+    <section>
+		<a href="generic.html" class="image">
+			<img src="{% link assets/images/pic_tma.jpeg %}" alt="" data-position="25% 25%" />
+		</a>
+		<div class="content">
+			<div class="inner">
+				<header class="major">
+					<h3>TMA Solutions</h3>
+                    <h4>Java Developer</h4>
+				</header>
+                <h5>Project: Nokia project</h5>
+				<p>A system for managing devices, networks, software, etc.</p>
+                <h5>Project: Virtual Training Lab</h5>
+                <p>
+                    R&D project, a system for managing vagrant boxes, creating courses and setting up a development environment automatically.
+                </p>
+				<ul class="actions">
+					<li><a href="generic.html" class="button">Read more</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</section>
