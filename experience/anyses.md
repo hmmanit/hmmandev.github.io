@@ -1,23 +1,28 @@
 ---
-layout: experience
+layout: work
 title: AnySES
-description: 2021 Nov 01 - Now 
+description: Android Team Leader
 image:
 show_tile: false
 ---
 
-Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
-Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
-Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
-Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.
+<h3>Outsource projects & Company products</h3>
+Participating in projects on attendance, order management, site management,...
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
-Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. 
-Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
-Pellentesque aliquam maximus risus, vel sed vehicula.
-
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
-Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
-Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.
+<center><h3>Responsibilities</h3></center>
+<div>
+    <dl>
+        <dd>- Attend meetings, communicate with Japanese project manager, grasp requirements, divide tasks for members.</dd>
+        <dd>- Manage Google play console and build releases for company products and client projects, manage Firebase console and create tasks based on Crashlytics.</dd>
+        <dd>- Participate in feature development and project maintenance, code review for team members.</dd>
+        <dd>- Refactor MVC to MVVM/Clean Architecture, migrate and use jetpack's new libraries for company products.</dd>
+    </dl>
+</div>
+<center><h3>Achievements</h3></center>
+<div>
+    <dl>
+        <dd>- Ability to manage a small team, grasp customer requirements, ability to detail and explain problems with Japanese project manager.</dd>
+        <dd>- Improve development capabilities and ensure code quality.</dd>
+        <dd>- Ability to read, understand and grasp information with Japanese documents.</dd>
+    </dl>
+</div>

@@ -1,23 +1,41 @@
 ---
-layout: experience
+layout: work
 title: TMA Solutions
-description: 2019 Mar 01 - 2019 Oct 31
+description: Java Developer
 image:
 show_tile: false
 ---
 
-Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
-Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
-Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
-Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.
+<h3>Nokia project</h3>
+A system for managing devices, networks, software, etc.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
-Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. 
-Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
-Pellentesque aliquam maximus risus, vel sed vehicula.
+<center><h3>Responsibilities</h3></center>
+<div>
+    <dl>
+        <dd>- Working as Java and AngularJS developer. Participated in fixing bugs and improving the application.</dd>
+        <dd>- Join Nokia’s interview to become an official on the project.</dd>
+    </dl>
+</div>
+<center><h3>Achievements</h3></center>
+<div>
+    <dl>
+        <dd>- Improve programming skills, exposure to a professional working environment. Become the official person. Know more technologies and systems such as: Kubernetes, Docker, Jenkins, Jira, etc.</dd>
+    </dl>
+</div>
 
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
-Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
-Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.
+<h3>Virtual Training Lab</h3>
+R&D project, a system for managing vagrant boxes, creating courses and setting up a development environment automatically.
+
+<center><h3>Responsibilities</h3></center>
+<div>
+    <dl>
+        <dd>- Work as Java and ReactJS developer. Participated in developing and improving system.</dd>
+        <dd>- Also participating in raising ideas to develop new features.</dd>
+    </dl>
+</div>
+<center><h3>Achievements</h3></center>
+<div>
+    <dl>
+        <dd>- Know more technologies and systems such as: Java Spring, Hibernate, Vagrant, ReactJS, MongoDB.</dd>
+    </dl>
+</div>
