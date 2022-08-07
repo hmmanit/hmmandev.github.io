@@ -9,7 +9,7 @@ nav-menu: true
 <section id="two" class="spotlights">
 	<section>
 		<a href="experience/anyses.html" class="image">
-			<img src="{% link assets/images/pic_anyses.webp %}" alt="" data-position="center center" />
+			<img src="{% link assets/images/anyses.webp %}" alt="" data-position="center center" />
 		</a>
 		<div class="content">
 			<div class="inner">
@@ -29,7 +29,7 @@ nav-menu: true
 	</section>
 	<section>
 		<a href="experience/rch.html" class="image">
-			<img src="{% link assets/images/pic_rch.jpeg %}" alt="" data-position="top center" />
+			<img src="{% link assets/images/rch.webp %}" alt="" data-position="top center" />
 		</a>
 		<div class="content">
 			<div class="inner">
@@ -49,7 +49,7 @@ nav-menu: true
 	</section>
 	<section>
 		<a href="experience/samsung.html" class="image">
-			<img src="{% link assets/images/pic_samsung.jpeg %}" alt="" data-position="25% 25%" />
+			<img src="{% link assets/images/samsung.webp %}" alt="" data-position="25% 25%" />
 		</a>
 		<div class="content">
 			<div class="inner">
@@ -69,7 +69,7 @@ nav-menu: true
 	</section>
     <section>
 		<a href="experience/tma.html" class="image">
-			<img src="{% link assets/images/pic_tma.jpeg %}" alt="" data-position="25% 25%" />
+			<img src="{% link assets/images/tma.webp %}" alt="" data-position="25% 25%" />
 		</a>
 		<div class="content">
 			<div class="inner">

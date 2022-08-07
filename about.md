@@ -1,7 +1,7 @@
 ---
 layout: about
 title: About
-image: assets/images/pic12.jpg
+image: assets/images/about.webp
 nav-menu: true
 
 ---

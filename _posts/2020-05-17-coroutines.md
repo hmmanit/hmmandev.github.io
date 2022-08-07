@@ -2,5 +2,5 @@
 layout: experience
 title: Coroutines
 description: Explore Kotlin coroutines
-image: assets/images/coroutines.png
+image: assets/images/kotlin_coroutines.webp
 ---

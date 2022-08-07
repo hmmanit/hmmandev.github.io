@@ -16,7 +16,7 @@ nav-menu: true
 
 		<a href="2021/09/18/kotlin_dsl.html" class="image">
 
-			<img src="{% link assets/images/kotlin_dsl.png %}" alt="" data-position="center center" />
+			<img src="{% link assets/images/kotlin_dsl.webp %}" alt="" data-position="center center" />
 
 		</a>
 
@@ -48,7 +48,7 @@ nav-menu: true
 
 		<a href="2020/12/24/clean_architecture.html" class="image">
 
-			<img src="{% link assets/images/clean_architecture.png %}" alt="" data-position="top center" />
+			<img src="{% link assets/images/clean_architecture.webp %}" alt="" data-position="top center" />
 
 		</a>
 
@@ -80,7 +80,7 @@ nav-menu: true
 
 		<a href="2020/05/17/coroutines.html" class="image">
 
-			<img src="{% link assets/images/coroutines.png %}" alt="" data-position="25% 25%" />
+			<img src="{% link assets/images/kotlin_coroutines.webp %}" alt="" data-position="25% 25%" />
 
 		</a>
 
