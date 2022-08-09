@@ -17,15 +17,9 @@ nav-menu: true
 		</header>
 
 <!-- Elements -->
-<h2 id="elements">Objective</h2>
+<h2 id="elements">Skills</h2>
 <div class="row 200%">
 	<div class="9u 12u$(medium)">
-    <ul>
-        <li>Become a key member, can work independently and highly productive at work.</li>
-        <li>Become a person who devote a lot to the company and gain the skills to become a technical leader in the future.</li>
-    </ul>
-
-<h2>Skills</h2>
 
 <div class="table-wrapper">
 	<table>
@@ -99,11 +93,19 @@ nav-menu: true
 </div>
 <div class="3u 12u$(medium)">
 
+<h2>Personal info</h2>
+Full name: <b>Man Ho Minh</b> <br/>
+DOB: <b>1996 July 20</b> <br/>
+Gender: <b>Male</b> <br/>
+
+<br/>
+<br/>
+
 <h2>Education</h2>
 <b>CAN THO UNIVERSITY</b> <br/>
 Sep 2015 – Sep 2019 <br/>
-Major: Information Technology <br/>
-GPA: 3.11/4.00 <br/>
+Major: <b>Information Technology</b> <br/>
+GPA: <b>3.11/4.00</b> <br/>
 
 </div>
 </div>
