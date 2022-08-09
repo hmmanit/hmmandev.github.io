@@ -97,9 +97,21 @@ nav-menu: true
 Full name: <b>Man Ho Minh</b> <br/>
 DOB: <b>1996 July 20</b> <br/>
 Gender: <b>Male</b> <br/>
+Email: <b><a href="mailto:{{ site.email }}">{{ site.email }}</a></b> <br/>
 
 <br/>
-<br/>
+
+<ul class="icons">
+    {% for key_value in site.socials %}
+        {% if key_value[1] %}
+            <li>
+                <a href="{{ key_value[1] }}" class="icon alt fa-{{ key_value[0] | downcase }}" target="_blank" rel="noopener noreferrer" aria-label="{{ key_value[0] }}">
+                    <span class="label">{{ key_value[0] }}</span>
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
 
 <h2>Education</h2>
 <b>CAN THO UNIVERSITY</b> <br/>
