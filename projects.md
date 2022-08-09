@@ -1,5 +1,5 @@
 ---
-title: Open-source projects
+title: Projects
 layout: blogs
 description:
 image: assets/images/pic03.jpg
@@ -16,7 +16,7 @@ nav-menu: true
 
 		<a href="projects/compose_search_bar.html" class="image">
 
-			<img src="{% link assets/images/pic09.jpg %}" alt="" data-position="center center" />
+			<img src="{% link assets/images/compose_search_bar.webp %}" alt="" data-position="center center" />
 
 		</a>
 
@@ -48,7 +48,7 @@ nav-menu: true
 
 		<a href="projects/compose_charts.html" class="image">
 
-			<img src="{% link assets/images/pic09.jpg %}" alt="" data-position="center center" />
+			<img src="{% link assets/images/compose_charts.webp %}" alt="" data-position="center center" />
 
 		</a>
 
@@ -80,7 +80,7 @@ nav-menu: true
 
         <a href="projects/styleable_seek_bar.html" class="image">
 
-			<img src="{% link assets/images/pic09.jpg %}" alt="" data-position="25% 25%" />
+			<img src="{% link assets/images/styleable_seek_bar.webp %}" alt="" data-position="25% 25%" />
 
 		</a>
 
@@ -112,7 +112,7 @@ nav-menu: true
 
 		<a href="projects/lined_edit_text.html" class="image">
 
-			<img src="{% link assets/images/pic09.jpg %}" alt="" data-position="center center" />
+			<img src="{% link assets/images/lined_edit_text.webp %}" alt="" data-position="center center" />
 
 		</a>
 
@@ -144,7 +144,7 @@ nav-menu: true
 
         <a href="projects/auto_dimensions.html" class="image">
 
-			<img src="{% link assets/images/pic09.jpg %}" alt="" data-position="top center" />
+			<img src="{% link assets/images/auto_dimensions.webp %}" alt="" data-position="top center" />
 
 		</a>
 
@@ -176,7 +176,7 @@ nav-menu: true
 
         <a href="projects/flex_image_view.html" class="image">
 
-			<img src="{% link assets/images/pic09.jpg %}" alt="" data-position="25% 25%" />
+			<img src="{% link assets/images/flex_image_view.webp %}" alt="" data-position="25% 25%" />
 
 		</a>
 
