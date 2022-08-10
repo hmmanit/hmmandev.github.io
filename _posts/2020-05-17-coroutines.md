@@ -7,306 +7,282 @@ image: assets/images/kotlin_coroutines.webp
 
 ## What is Coroutines
 
-* Thông thường, có 2 loại multitasking methods để quản lí multiple
-  processes:
-    * "Preemptive Multitasking", OS quản lí việc chuyển đổi giữa các
+* Generally, there are two types of multitasking methods to manage multiple processes:
+    * "Preemptive Multitasking": the OS manages the switching between
       processes
-    * "Cooperative Multitasking", mỗi process quản lý behavior của chính
-      nó
-* Coroutines là một software components tạo ra các sub coroutines cho
+    * "Cooperative Multitasking": each process manages its own behavior
+      it
+* Coroutines is a software component that generates sub coroutines for
   Cooperative Multitasking
-* Coroutines được sử dụng lần đầu tiên vào năm 1958 cho assembly
-  language; Python, Javascript, C# cũng đã sử dụng coroutines trong
-  nhiều năm.
-* Trong Kotlin, coroutines được giới thiệu như một "Sequence of well
-  managed sub tasks". Ở mức độ nào đó, coroutine có thể được xem như
-  một Thread gọn nhẹ
-* Một thread có thể chạy nhiều coroutines, một coroutine cũng có thể
-  được chuyển qua lại giữa các thread, có thể suspend ở một thread và
-  resume ở một thread khác.
+* Coroutines were first used in 1958 for assemblies
+  language; Python, Javascript, C# also used coroutines in
+  many years.
+* In Kotlin, coroutines are introduced as a "Sequence of well
+  managed sub tasks.” To some extent, coroutine can be seen as
+  a lightweight Thread
+* One thread can run multiple coroutines, one coroutine can also
+  can be passed between threads, can suspend on one thread and
+  resume in another thread.
 
 ## Why we need Coroutines
 
-* Tất cả những "painful task" được thực hiện bằng RxJava, AsyncTask
-  hoặc những methods khác như executors, HandlerThreads và
-  IntentServices đều được thực hiện một cách đơn giản bằng coroutines.
-* Coroutines API cũng cho phép viết asynchronous code trong một
+* All "painful tasks" are done using RxJava, AsyncTask
+  or other methods like executors, HandlerThreads and
+  IntentServices are all simply implemented using coroutines.
+* Coroutines API also allows writing asynchronous code in one
   sequential manner.
-* Tránh những boilerplate code đến từ các callbacks, làm cho code dễ
-  đọc và dễ bảo trì.
+* Avoid boilerplate code coming from callbacks, make the code easy
+  readable and easy to maintain.
 
 ## Why we need asynchronous programming in android development?
 
-* Hầu hết smartphones có refresh frequency thấp nhất là 60Hz. Điều này
-  có nghĩa là ứng dụng sẽ refresh 60 lần mỗi giây (cách 16.666ms cho
-  mỗi lần refresh). Do đó, nếu ta chạy một ứng dụng mà nó sẽ vẽ trên
-  màn hình bằng main thread mỗi 16.66s. Đồng thời, cũng có những
-  smartphones có refresh frequency là 90Hz hoặc 120Hz, tượng tự, ứng
-  dụng chỉ cần 11.11ms và 8.33ms để thực hiện refresh trên main thread.
-* Mặc định, android main thread sẽ có một bộ các regular
-  responsibilities - nó sẽ luôn parse XML, inflate view components và
-  draw chúng lặp lại mỗi lần refresh
-* Main thread cũng phải lắng nghe các tương tác của người dùng như
-  click events
-    * Vì vậy, nếu ta viết quá nhiều task xử lý trên main thread, nếu thời
-      gian thực thi của nó vượt quá thời gian cực nhỏ giữa các lần
-      refresh, ứng dụng sẽ cho thấy performance errors, freeze the
+* Most smartphones have a refresh frequency of at least 60Hz. 
+  * This means the app will refresh 60 times per second (16,666ms for every refresh). 
+  * Therefore, if we run an application that will draw on screen by main thread every 16.66s. At the same time, there are also smartphones with a refresh frequency of 90Hz or 120Hz 
+  * Similarly, the application only needs 11.11ms and 8.33ms to perform a refresh on the main thread.
+* By default, the android main thread will have a set of regulars responsibilities - it will always parse XML, inflate view components and draw them repeated every refresh
+* Main thread must also listen for user interactions like click events
+    * So, if we write too many tasks to handle on the main thread, if time
+      its execution time exceeds the extremely small time between times
+      refresh, the app will show performance errors, freeze the
       screen, unpredictable behaviours.
-    * Với công nghệ, refresh frequency sẽ ngày càng cao, ta cần phải
-      triển khai những tác vụ bất đồng bộ cần thời gian chạy dài trong
-      một luồng riêng. Để đạt được điều đó, cách mới nhất, hiệu quả nhất
-      hiện nay chính là Kotlin coroutines.
-
--- Demo "WhyCoroutines" --
-
+    * With technology, the refresh frequency will be higher and higher, we need to
+      Deploy long-running asynchronous tasks in
+      a separate thread. To achieve that, the newest, most effective way
+      Currently Kotlin coroutines.
+    
 ## Coroutines vs. Thread
 
-* Coroutine và Thread có giôngs nhau? - KHÔNG
-* Chúng ta có Main thread (hay còn gọi là UI Thread), ngoài ra chúng ta
-  còn có khác background worker thread, nhưng thread không giống
+* Coroutine and Thread are similar? - NO
+* We have Main thread (aka UI Thread), in addition we
+  there is another background worker thread, but the thread is not the same
   coroutine.
-* Bất cứ thread nào cũng có thể có nhiều coroutines được thực hiện
-  trong cùng một lúc.
-* Coroutines chỉ là "separate processors" chạy trên một thread, thậm chỉ
-  có thể lên đến 100 coroutines chạy cùng 1 lúc.
-* Nhưng mặc định, coroutines không giúp ta theo dõi chúng, hoặc theo dõi
-  những công việc được hoàn thành bởi chúng. Do đó nếu ta không quản lý
-  cẩn thận, chúng có thể dẫn tới memory leak.
-* Trong Kotlin coroutines, chúng ta phải chạy tất cả coroutines trong
-  một scope, sử dụng properties trong suốt scope, chúng ta có thể dễ
-  dàng theo dõi coroutines, cancel và xử lý errors hoặc exceptions được
-  ném ra bởi chúng.
+* Any thread can have multiple coroutines executed
+  in the same time.
+* Coroutines are just "separate processors" that run on a single thread, even
+  Up to 100 coroutines can run at the same time.
+* But by default, coroutines do not help us track them, or track
+  the work done by them. So if we don't manage
+  Be careful, they can lead to memory leaks.
+* In Kotlin coroutines, we have to run all coroutines in
+  a scope, using properties throughout the scope, we can easily
+  Easily monitor coroutines, cancel and handle errors or exceptions
+  thrown out by them.
 
-### What exactly does concurrency mean?
+[comment]: <> (### What exactly does concurrency mean?)
 
-### How is concurrency related to parallelism?
+[comment]: <> (### How is concurrency related to parallelism?)
 
-### What about threads? Why should we consider using coroutines if we have threads? What are the benefits?
+[comment]: <> (### What about threads? Why should we consider using coroutines if we have threads? What are the benefits?)
 
-
-### How threads work at a very low level inside our CPU?
+[comment]: <> (### How threads work at a very low level inside our CPU?)
 
 #### Threads vs cores
 
-* Tưởng tượng 4-cores CPU giống như một nhà máy, mỗi core tương ứng với
-  một worker. Trong ngữ cảnh này, ta có 4 worker, đại diện cho các lõi
-  riêng của bộ xử lý. Thông thường, toàn bộ process được điều khiển bởi
-  Boss - OS, người sẽ giao lệnh cho worker.
-* Threads giôngs như một sequences of commands gửi tới CPU core -
-  threads chuyển task tới CPU core.
-* Khi workers làm việc, OS sẽ quản lý toàn bộ các threads và để ý tới
-  schedule, như ta biết, OS rất đắt giá, giống như threads, cả 2 đều
-  tốn nhiều chi phí và cần nhiều resources. Cơ bản, mỗi threads trong
-  JVM chiếm khoảng 1MB bộ nhớ.
+* Imagine 4-cores CPU as a factory, each core corresponds to
+  a worker. In this context, we have 4 workers, representing cores
+  processor's own. Normally, the whole process is controlled by
+  Boss - OS who will give commands to the worker.
+* Threads are like sequences of commands sent to the CPU core -
+  threads transfers the task to the CPU core.
+* When workers work, OS will manage all threads and pay attention to
+  schedule, as we know, OS is very expensive, like threads, both are
+  costly and requires a lot of resources. Basically, each thread in
+  The JVM takes up about 1MB of memory.
 
 #### Physical vs logical core
 
-* A physical core là một phẩn phần cứng của CPU, nó đơn giản là các
-  bóng bán dẫn bên trong CPU
-* A logical core giống như một phần của code, nó tồn tại trong máy
-  tính. Số lượng cores chính là số lượng threads có thể thực thi trong
-  cùng một thời điểm.
-    * Ví dụ, ta có 4 cores CPU, nhưng có 4 threads có thể thực thi cùng
-      một thời điểm, ta có 4 physical cores và 4 logical cores.
+* A physical core is a hardware part of the CPU, it is simply the
+  transistor inside CPU
+* A logical core is like a piece of code, it exists in the machine
+  count. The number of cores is the number of threads that can execute in
+  in the same time.
+    * For example, we have 4 CPU cores, but 4 threads can execute at the same time
+      At a time, we have 4 physical cores and 4 logical cores.
 
-Tưởng tượng, ta có 2 line làm việc, worker đang làm việc ở line 1, nhưng
-line 1 gặp vấn đề không thể tiếp tục hoạt động. Trong khi đó, line 2
-đang sẵn sàng để hoạt động, thay vì đứng ở line 1 và chờ đến khi nó có
-thể hoạt động trở lại, worker có thể chuyển sang line 2 và tiếp tục làm
-việc, cùng lúc đó có thể theo dõi line 1 hoạt động trở lại và quay lại
-làm việc ở line 1. Điều đó sẽ tăng hiệu quả công việc.
+Imagine, we have 2 working lines, worker is working on line 1, but
+line 1 has a problem and cannot continue to work. Meanwhile, line 2
+is ready to go, instead of standing at line 1 and waiting for it to be available
+can work again, worker can switch to line 2 and continue working
+work, at the same time can watch line 1 work again and come back
+work on line 1. That will increase work efficiency.
 
 ### Kotlin coroutines are not managed by the OS
 
-* Nó là language feature. OS không cần phải quan tâm tới coroutine hay
-  lên kế hoạch cho nó. Coroutines sẽ quản lý chính nó bằng cooperative
+* Kotlin coroutines are language features. OS doesn't need to care about coroutine or
+  plan for it. Coroutines will manage itself by cooperative
   multitasking.
-* Tại thời điểm coroutine suspend, Kotlin runtime sẽ tìm tới coroutine
-  khác để tiếp tục quá trình thực thi. Điều này giôngs như mọi việc mà
-  OS phải làm trước đây có thể thực hiện bằng một giám sát viên với mức
-  chi phí rẻ hơn nhiều.
-* Coroutines không giống threads, nó không tốn nhiều memory, chỉ vài
-  byte cho mỗi coroutine. Do đó, ta có thể chạy đồng thời rất nhiều
-  công việc với chi phí cực nhỏ.
+* At the time the coroutine suspends, the Kotlin runtime will look for the coroutine
+  another to continue the execution. This is like everything
+  OS to do previously can be done by a supervisor with
+  much cheaper cost.
+* Coroutines are not like threads, it doesn't take a lot of memory, just a few
+  bytes for each coroutine. Therefore, we can run a lot at the same time
+  work at a very low cost.
 
 ### Comparing
 
-* Thread rất hạn chế, ta biết Thread Pool, nó sẽ hạn chế số Thread ở
-  một thời điểm, còn coroutines hầu như là hàng free, ta có thể khởi
-  chạy hàng nghìn coroutine cùng lúc. Nó cho phép chạy bất đồng bộ
-  trong một cách thức viết mã đồng bộ.
+* Thread is very limited, we know Thread Pool, it will limit the number of Threads at
+  for a time, and coroutines are almost free, we can start
+  running thousands of coroutines at the same time. It allows to run asynchronously
+  in a synchronous way of writing code.
 
 ### Blocking and Non-blocking
 
-* Blocking và Non-blocking là cách miêu tả việc cách thực thực hiện lệnh
-  của một chương trình
-    * Blocking chính là các dòng lệnh được thực hiện một cách tuần tự,
-      khi một dòng lệnh ở phía trước chưa hoàn thành thì dòng lệnh phía
-      sau sẽ không thể thực thi, cho nên nếu dòng lệnh đó thực hiện thao
-      tác với IO, networking thì bản thân nó sẽ trở thành vật cản và block
-      các xử lý phía sau.
-    * Non-blocking nghĩa là các dòng lệnh không nhất thiết lúc nào cũng
-      được thực hiện tuần tự. Nếu dòng lệnh phía sau không cần kết quả từ
-      các câu lệnh trước, thì nó hoàn toàn có thể được thực hiện ngay sau
-      khi dòng lệnh phía trước được gọi (Asynchronous), kèm theo mỗi
-      dongf lệnh ta sẽ có một callback, callback là đoạn mã sẽ được thực
-      thi sau khi có kết quả trả về từ dòng lệnh không đồng bộ.
+* Blocking and Non-blocking are ways of describing how to execute an order
+  of a program
+    * Blocking is the command lines are executed sequentially,
+      when a command line in front is not completed, the line in front
+      later will not be able to execute, so if that command line executes
+      cooperate with IO, networking, it will itself become an obstacle and block
+      rear processing.
+    * Non-blocking means that the command lines are not necessarily always
+      is performed sequentially. If the command line behind doesn't need the result from
+      previous statements, it can be executed immediately after
+      when the preceding command line is called (Asynchronous), accompanied by each
+      dongf command we will have a callback, callback is the code that will be executed
+      execute after the results returned from the asynchronous command line.
     * Example: `launch { delay(1000L) println("World!") } print("Hello,")
       Thread.sleep(2000L)`
-        * Ở đây, Thread.sleep() là một blocking, delay() là một
-          non-blocking. Thread.sleep() sẽ làm cho thread ngủ hoàn toàn,
-          trong khi delay() chỉ tạm dừng nó, cho phép các phần còn lại hoạt
-          động bình thường.
-    * Coroutines là các tính toán có thể bị đình chỉ mà không chặn một
-      luồng.
+        * Here, Thread.sleep() is a blocking, delay() is a
+          non-blocking. Thread.sleep() will put the thread to sleep completely,
+          while delay() just pauses it, allowing the rest to work
+          normal movement.
+    * Coroutines are computations that can be suspended without blocking a
+      stream.
 
 ## Coroutines vs. Callbacks
 
-* Trước đây, để sử dụng các task tốn nhiều thời gian thì hầu như ta đều
-  sử dụng callbacks, bằng cách này thì task sẽ được chạy dưới
-  background thread, khi task chạy xong thì trả kết quả lên main
+* In the past, to use time-consuming tasks, most of us
+  use callbacks, this way the task will be run under
+  background thread, when the task is finished, return the result to main
   thread.
-    * Example:
 
-`// Slow request with callbacks @UiThread fun makeNetworkRequest() { //
-The slow network request runs on another thread slowFetch { result -> //
-When the result is ready, this callback will get the result show(result)
-} // makeNetworkRequest() exits after calling slowFetch without waiting
-for the result }`
-
-* Sử dụng coroutines để loại bỏ callbacks:
-    * Callbacks là một cách tốt, tuy nhiên code sẽ nặng và khó đọc, khó
+* Use coroutines to remove callbacks:
+    * Callbacks are a good way, but the code will be heavy and hard to read, hard
       debug.
-    * Kotlin coroutines sẽ chuyển cấu trúc callback thành code tuần tự,
-      dễ đọc hơn.
-    * Cả callback và coroutines đều cho ta một kết quả giống nhau
-    * Keyword suspend để đánh dấu function trở thành coroutine
-    * Example: ` // Slow request with coroutines @UiThread suspend fun
-      makeNetworkRequest() { // slowFetch is another suspend function so
-      instead of // blocking the main thread makeNetworkRequest will
-      `suspend` until the result is // ready val result = slowFetch() //
-      continue to execute after the result is ready show(result) }
+    * Kotlin coroutines will convert callback structure into sequential code,
+      easier to read.
+    * Both callbacks and coroutines give the same result
+    * Keyword suspend to mark function as coroutine
 
-suspend fun slowFetch(): SlowResult { ... }`
-
-* Giữa callback với coroutine thì code của coroutine sẽ dễ đọc hơn,
-  ngắn gọn và dễ hiểu hơn dù có cùng chung kết quả. Và nếu muốn nhiều
-  task chạy hơn thì chỉ cần viết tiếp, không cần phải tạo nhiều
-  callback.
+* Between callback and coroutine, coroutine's code will be more readable,
+  shorter and easier to understand despite the same results. And if you want more
+  task runs better, just keep writing, no need to create much
+  callbacks.
 
 ## New concept
 
 ### CoroutineScope
 
-* CoroutineScope là một interface mà chúng ta sẽ sử dụng để cung cấp
-  một scope cho những coroutines.
-* Trong Kotlin coroutines, chúng ta còn có một scope khác là
-  GlobalScope. GlobalScope sử dụng cho việc chạy các top-level
+* CoroutineScope is an interface that we will use to provide a scope for coroutines.
+* In Kotlin coroutines, we also have another scope
+  GlobalScope. GlobalScope used for running top-levels
   coroutines - which are operating on the whole application lifetime.
-* Trong android development, chúng ta rất hiếm khi sử dụng GlobalScope
-* Cả 2 Scope này đều được mô tả như một reference cho coroutine context
+* In android development we rarely use GlobalScope
+* Both of these scopes are described as a reference for the coroutine context
 
 ### Context - Dispatchers
 
-* Dispatcher mô tả một loại của thread nơi mà coroutines sẽ được chạy
-* Trong Kotlin Android structured concurrency, nó luôn được khuyến
-  khích sử dụng main thread sau đó chuyển xuống background thread
-    * Dispatchers.Main: coroutines sẽ được chạy trên main thread (UI
-      thread), chúng ta chỉ sử dụng main dispatcher cho những tác vụ nhỏ,
-      nhẹ và có tác động đến UI như: gọi tới một UI function, gọi tới một
-      suspending function để nhận dữ liệu được cập nhật từ LiveData.
-      Trong structured concurrency, lời khuyên tốt nhất là khởi chạy
-      coroutines ở main thread và sau đó chuyển sang background thread.
-    * Dispatchers.IO: coroutines sẽ được chạy ở background thread "from a
-      shared pool of on-demand created threads". Chúng ta sẽ dùng IO
-      dispatcher để làm việc với local database, giao tiếp với network và
-      làm việc với files.
-    * Dispatchers.Default: được sử dụng cho CPU intensive tasks như sắp
-      xếp một large list, parse một huge JSON file,...
-    * Dispatchers.Unconfined: là một dispatcher được sử dụng với
-      GlobalScope, nếu ta sử dụng Unconfined, coroutines sẽ được chạy
-      trên current thread, nhưng nếu như chúng đã suspended hoặc resumed,
-      nó sẽ chạy trên thread mà có suspending function đang chạy.
-      Dispatcher này không được khuyến khích sử dụng cho Android
+* Dispatcher describes a type of thread where coroutines will be run
+* In Kotlin Android structured concurrency, it is always recommended
+  recommend using main thread then move to background thread
+    * Dispatchers.Main: coroutines will be run on the main thread (UI
+      thread), we only use main dispatcher for small tasks,
+      lightweight and has an impact on the UI such as: calling a UI function, calling a
+      suspending function to get updated data from LiveData.
+      In structured concurrency, the best advice is to launch
+      coroutines on the main thread and then switch to the background thread.
+    * Dispatchers.IO: coroutines will be run in the background thread "from a
+      shared pool of on-demand created threads.” We will use IO
+      dispatcher to work with the local database, communicate with the network and
+      work with files.
+    * Dispatchers.Default: used for CPU intensive tasks like about
+      sort a large list, parse a huge JSON file,...
+    * Dispatchers.Unconfined: is a dispatcher used with
+      GlobalScope, if we use Unconfined, coroutines will be run
+      on the current thread, but if they are suspended or resumed,
+      it will run on the thread that has the suspending function running.
+      This Dispatcher is not recommended for Android use
       Development.
-* Ngoài 4 dispatcher này, coroutines API cũng tạo điều kiện cho chúng
-  ta chuyển đổi từ "executors" thành "dispatchers", cũng như tạo ra các
+* In addition to these 4 dispatchers, the coroutines API also facilitates them
+  we convert from "executors" to "dispatchers", as well as create
   custom dispatcher.
-* Tổng kết, trong Android development, sử dụng phổ biến nhất là Main và
+* To summarize, in Android development, the most commonly used are Main and
   IO Dispatcher.
 
 ### Coroutines Builder
 
-https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-core
+[https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-core](https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-core)
 
-* Coroutine builder là một extension function của coroutine scopes,
-  chúng ta có 4 builders chính:
-    * launch: sẽ chạy một coroutine mới mà không block current thread,
-      builder này sẽ trả về một instance của Job, thứ này có thể được sử
-      dụng như một reference cho coroutine. Chúng ta có thể sử dụng
-      instance này để theo dõi hoạt động của coroutine và cancel nó.
-      Chúng ta sử dụng launch builder cho những coroutines không có giá
-      trị trả về. builder này trả về một Job instance nhưng không có giá
-      trị "return", chúng ta không thể sử dụng coroutine này để tính toán
-      và trả về kết quả cuối cùng.
-    * async: nếu ta muốn nhận được kết quả trả về, nên sử dụng async
-      builder, điều chính của async builder là cho phép chạy coroutines
-      một cách song song, async builder cũng sẽ không block current thread
-      (giống launch builder). Builder này sẽ return một instance của
-      Deferred. Thực tế, Deferred interface là một extension của Job
-      interface, vì vậy ta có thể sử dụng nó như một Job và cancel
-      coroutine. Nếu kết quả trả về của chúng ta là một String value. để
-      lấy được dữ liệu từ một deferred object, chúng ta phải gọi await()
-      function, async cũng là một trong những builder được sử dụng phổ
-      biến nhất.
-    * produce: sử dụng cho những coroutines mà nó tạo ra một luồng các
-      elements. Builder này trả về instance của ReceiveChannel.
-    * runblocking: Trong Android Development, chúng ta sử dụng
-      runblocking chủ yếu cho testing, builder này sẽ block thread cho
-      đến khi nó được thực thi xong, builder này trả về type T.
+* Coroutine builder is an extension function of coroutine scopes,
+  We have 4 main builders:
+    * launch: will run a new coroutine without blocking the current thread,
+      This builder will return an instance of Job, which can be used
+      used as a reference for coroutine. We can use
+      this instance to monitor the coroutine's activity and cancel it.
+      We use launch builder for coroutines with no price
+      return value. This builder returns a Job instance but no value
+      value "return", we cannot use this coroutine to calculate
+      and return the final result.
+    * async: if we want to get the result returned, we should use async
+      builder, the main thing about async builder is to allow coroutines to run
+      Parallelly, the async builder also won't block the current thread
+      (same as launch builder). This builder will return an instance of
+      Deferred. In fact, the Deferred interface is an extension of Job
+      interface, so we can use it as a Job and cancel
+      coroutine. If our return is a String value. to
+      To get data from a deferred object, we must call await()
+      function, async is also one of the most commonly used builder
+      most variable.
+    * produce: used for coroutines that create a stream of
+      elements. This builder returns an instance of ReceiveChannel.
+    * runblocking: In Android Development we use
+      runblocking is mainly for testing, this builder will block the thread for
+      until it is done executing, this builder returns type T.
 
 #### Job
 
-* Giữ thông tin của coroutine, job cung cấp các phương thức như
+* Holds the information of the coroutine, the job provides methods like
   cancel(), join()
-    * cancel(): cancel coroutine, điều đặc biệt ở đây là hàm cancel chỉ
-      set lại property isActive = false, nhưng coroutine vẫn tiếp tục
-      chạy, có 2 cách để thực sự dừng coroutine đã bị gọi cancel:
-        * check property isActive trước khi thực hiện tác vụ
-        * gọi một suspending function bất kì trước khi thực hiện tác vụ,
-          hàm suspending có khả năng check xem coroutine có còn active hay
-          không, nếu không nó sẽ không thực hiện những dòng sau.
-    * join(): khi ta gọi join tức là thì coroutine phải chạy xong tiến
-      trình mới tiếp tục
-    * khối finally: nếu coroutine bị cancel, nó sẽ tìm tới khối finally
-      để chạy. Ta có thể tận dụng đặc điểm này để đóng hết resource trước
-      khi coroutine bị hủy. Quay lại ví dụ với cancel(), nếu ta đặt 1
-      suspending function (ví dụ với delay()) trong khối finally,
-      coroutine sẽ dừng ngay tại đây mà không chạy tiếp các dòng sau.
-    * NonCancellable coroutine: với withContext suspending function, ta có
-      thể truyền vào context là NonCancellable để khiến nó chạy kể cả đã
-      cancel hay được check lại với một suspending function.
+    * cancel(): cancel coroutine, the special thing here is that the cancel function is only
+      reset property isActive = false, but coroutine continues
+      run, there are 2 ways to actually stop the coroutine that was called to cancel:
+        * check the isActive property before performing the action
+        * call any suspending function before executing the task,
+          suspending function has the ability to check if the coroutine is still active
+          no, otherwise it won't execute the following lines.
+    * join(): when we call join, the coroutine must finish running
+      new program continues
+    * finally block: if coroutine is canceled, it will look for finally block
+      to run. We can take advantage of this feature to close all resources first
+      when the coroutine is canceled. Going back to the example with cancel(), if we set 1
+      suspending function (example with delay()) in the finally block,
+      coroutine will stop right here without continuing the following lines.
+    * NonCancellable coroutine: with the withContext suspending function, we have
+      You can pass the context as NonCancellable to make it run even if it's already
+      cancel or be checked with a suspending function.
 
 #### Deferred
 
-* Deferred là một non-blocking, có thể được hủy bỏ nếu được yêu cầu, về
-  cơ bản nó cũng đại diện cho Job coroutine, có chứa giá trị cho một
-  công việc tương ứng.
-* Sử dụng Deferred cho phép ta kết hợp
+* Deferred is a non-blocking, can be canceled if requested, about
+  it also basically represents the Job coroutine, which contains the value for a
+  respective work.
+* Using Deferred allows us to combine
 
 ## Switch the thread of a coroutine
 
---- Demo Switch thread of a coroutine ---
+
 
 ### Suspending functions
 
-* Trong Kotlin coroutines, bất cứ khi nào một coroutine suspended, the
+* In Kotlin coroutines, whenever a coroutine is suspended, the
   current thread will stack frame of the function is copied and saved in
   the memory.
 * When the function resumes after completing its task, the stack frame
   is copied back from where it was saved and starts running again.
-* Kotlin coroutines API cung cấp rất nhiều function để giúp ta làm việc
-  với nó đơn giản hơn:
+* Kotlin coroutines API provides a lot of functions to help us work
+  with it simpler:
     * withContext():
     * withTimeout():
     * withTimeoutOrNull():
@@ -316,15 +292,15 @@ https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-core
     * supervisorScope:
     * coroutineScope:
     * and more...
-    * Một số thư viện khác như Room hay Retrofit cũng cung cấp những
-      suspending functions để hỗ trợ công việc với coroutines
+    * Some other libraries such as Room or Retrofit also provide these
+      suspending functions to support working with coroutines
 * Notes:
-    * Một suspending function chỉ có thể được gọi trong một suspending
+    * A suspending function can only be called within a suspending
       function
-    * Suspending function được sử dụng như một "label" cho những hàm nặng
-      và tốn nhiều thời gian chạy.
-    * Coroutine có thể gọi cả suspending functions và regular functions
-    * Suspending function không block thread
+    * Suspending function is used as a "label" for heavy functions
+      and take a long time to run.
+    * Coroutine can call both suspending functions and regular functions
+    * Suspending function does not block thread
 
 ## Async & Await
 
@@ -333,160 +309,150 @@ https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-core
     * Task 2: 15s
     * Task 3: 8s
     * Task 4: 12s
-        * Với synchronous code, chúng ta sẽ phải đợi ít nhất 10 + 15 + 8 +
-          12 = 45s để nhận được kết quả cuối cùng
-        * Nhưng với asynchronous, chúng ta sẽ chỉ phải đợi khoảng 15s là có
-          thể nhận được kết quả.
+        * With synchronous code, we will have to wait at least 10 + 15 + 8 +
+          12 = 45s to get the final result
+        * But with asynchronous, we will only have to wait about 15 seconds for it
+          results can be obtained.
 
-* Decomposition Parallel, thông thường, để viết được nó sẽ rất phức
-  tạp, khó viết, khó đọc, khó bảo trì
-* Nhưng với Kotlin coroutines, chúng ta có thể làm được nó một cách đơn
-  giản.
-
---- Demo Async - Await
+* Decomposition Parallel, usually, to write it will be very complicated
+  complicated, difficult to write, difficult to read, difficult to maintain
+* But with Kotlin coroutines, we can do it simply
+  simple.
 
 ## Unstructured Concurrency vs. Structured Concurrency
 
-* Trong trường hợp ta muốn chạy nhiều coroutines cùng lúc trong một
-  suspending function và nhận về kết qủa, có 2 cách để làm được điều
-  đó, chúng ta gọi là Structured Concurrency và Unstructured Concurrency
+* In case we want to run multiple coroutines at the same time in one
+  suspending function and get the result, there are 2 ways to do this
+  there we call Structured Concurrency and Unstructured Concurrency
 
 ### Unstructured Concurrency
 
-* Đây là cách ứng dụng sai --- Demo StructuredConcurrency (Un)---
-* Unstructured Concurrency sẽ không đảm bảo hoàn thành tất cả tasks của
-  suspending function trước khi trả về.
-* Ở đây, thực tế thì child coroutines (delay 1000) vẫn chạy, ngay cả
-  sau khi coroutine cha đã hoàn thành (setText), kết quả dẫn tới là
-  những lỗi không đoán trước, đó là với trường hợp sử dụng launch
-  builder như đã demo.
-* Với async builder và sử dụng await function thì có thể nhận được kết
-  quả như mong muốn, nhìn qua thì có vẻ như nó chạy đúng, nhưng ở đây
-  vẫn có vấn đề xảy ra. Trong Android, nếu có một error xảy ra trong
-  function, nó sẽ ném ra exception, vì vậy ta có thể catch exception
-  trong những hàm gọi nó và xử lý. Trong Unstructured Concurrency, dù
-  sử dụng launch hay async builder, chúng ta đều không thể xử lý
-  exception đúng cách. Vì vậy, mặc dù nó có thể chạy đúng trong một số
-  trường hợp, nhưng thực tế không nên sử dụng.
+* This is the wrong application --- Demo StructuredConcurrency (Un)---
+* Unstructured Concurrency will not guarantee completion of all your tasks
+  suspending function before returning.
+* Here, in fact, child coroutines (delay 1000) are still running, even
+  after the parent coroutine has completed (setText), the result is
+  unexpected bugs, that's with the launch . use case
+  builder as demo.
+* With async builder and using await function can get result
+  The result is as expected, at first glance it seems to work properly, but here
+  problem still occurs. In Android, if an error occurs in
+  function, it will throw exception, so we can catch exception
+  in the functions that call it and handle it. In Unstructured Concurrency, though
+  using launch or async builder, we can't handle it
+  exception properly. So although it may run properly in some
+  case, but should not actually be used.
 
 ### Structured Concurrency
 
 <!--* Set of language features and best practices introduced for Kotlin coroutines to avoid coroutines leak and manage coroutines productively-->
-* Tất cả những vấn đề phát sinh ở Unstructured Concurrency đều có thể
-  dễ dàng giải quyết với coroutineScope function, chú ý ở đây
-  coroutineScope khác CoroutineScope.
-    * CoroutineScope là một interface.
-    * coroutineScope là một suspending function cho phép chúng ta tạo ra
-      các child scope trong một phạm vi coroutine nhất định, coroutine
-      scope này đảm bảo sự hoàn thành của tasks khi suspending function
-      trả về kết quả.
+* All problems arising in Unstructured Concurrency are possible
+  easily solved with coroutineScope function, pay attention here
+  coroutineScope is different from CoroutineScope.
+    * CoroutineScope is an interface.
+    * coroutineScope is a suspending function that allows us to create
+      child scopes within a certain coroutine scope, coroutine
+      This scope ensures the completion of tasks when suspending function
+      return results.
 
---- Demo StructuredConcurrency ---
+* When using coroutineScope, it will guarantee completion of all tasks
+  in the child scope provided by it before return (here
+  launch and async).
+* In the previous example, the result we get is 70, because the problem occurs
+  with unstructured concurrency.
+* In this example, the result should be 120.
 
-* Khi sử dụng coroutineScope, nó sẽ đảm bảo hoàn tành tất cả các tasks
-  trong child scope được cung cấp bởi nó trước khi return (ở đây là
-  launch và async).
-* Trong ví dụ trước, kết quả ta nhận được là 70, bởi vì vấn đề xảy ra
-  với unstructured concurrency.
-* Ở ví dụ này, kết quả phải là 120.
-
-* Ví dụ này chính là best recommended practice, khi chúng ta có nhiều
-  coroutines, chúng ta luôn luôn nên start Dispatcher.Main, với
-  CoroutineScope interface, và bên trong suspending function, ta nên sử
-  dụng coroutineScope function để cung cấp child scope.
+* This example is the best recommended practice, when we have many
+  coroutines, we should always start Dispatcher.Main, with
+  CoroutineScope interface, and inside suspending function, we should use
+  Use the coroutineScope function to provide child scope.
 * Notes:
-    * Structured Concurrency sẽ đảm bảo hoàn thành tất cả các tasks chạy
-      bởi coroutines bên trong child scope trước khi suspending function
-      return. Thực tế, trong coroutineScope, nó đợi child coroutines hoàn
-      thành, không chỉ vậy, nó còn có một lợi ích khác. Khi errors xảy ra,
-      exception được ném ra, structured concurrency cũng đảm bảo được việc
-      thống báo đến caller function. Vì vậy ta có thể dễ dàng xử lý,
-      chúng ta cũng có thể sử dụng structured concurrency để cancel chúng
-      nếu cần.
-    * Nếu chúng ta cancel toàn bộ child scope, tất cả những gì xảy ra bên
-      trong nó đều bị cancel.
-    * Ta cũng có thể cancel coroutine một cách độc lập.
+    * Structured Concurrency will ensure completion of all running tasks
+      by coroutines inside child scope before suspending function
+      return. In fact, in the coroutineScope, it waits for the child coroutines to complete
+      not only that, it also has another benefit. When errors occur,
+      exception is thrown, structured concurrency is also guaranteed
+      notify the caller function. So we can easily handle,
+      we can also use structured concurrency to cancel them
+      necessary.
+    * If we cancel the entire child scope, everything happens inside
+      in it are all cancelled.
+    * You can also cancel the coroutine independently.
 
-### Exception trong Coroutines
+### Exception in Coroutines
 
-* Với launch:
-    * Khi throw Exception, coroutine sẽ stop và ném ra exception
-* Với async:
-    * Khác biệt một chút là, coroutine vẫn stop, nhưng exception k được
-      ném ra
-    * Là vì exception được đóng gói vào Deferred, nên chỉ khi ta await()
-      thì nó mới được ném ra.
+* With launch:
+    * When throw Exception, coroutine will stop and throw exception
+* With async:
+    * The difference is, the coroutine still stops, but the exception doesn't work
+      throw out
+    * Because the exception is encapsulated into Deferred, only if we await()
+      then it is thrown out.
 
-* Nhưng nếu ta chạy cùng lúc 100 coroutines, làm sao để bắt được hết
+* But if we run 100 coroutines at the same time, how can we catch them all
   exception?
 
 #### CoroutineExceptionHandler
 
-* CoroutineExceptionHandler được dùng như một generic catch block của
-  tất cả coroutine.
-* Exception sẽ được bắt và trả về cho một hàm callback là override
+* CoroutineExceptionHandler is used as a generic catch block of
+  all coroutines.
+* Exception will be caught and returned for a callback function that is override
   handleException(context: CoroutineContext, exception: Throwable)
 * Notes:
-    * CoroutineExceptionHandler không thể bắt được exception được đóng
-      gói vào Deferred, và coroutine trong khối runBlocking, do đó ta
-      phải tự catch
+    * CoroutineExceptionHandler could not catch the closed exception
+      wrapping into Deferred, and coroutine in the runBlocking block, so we
+      have to catch yourself
 
-* Như đã nói, khi gặp exception, coroutine sẽ tìm code trong khối
-  finally để chạy, vậy nếu code trong finally cũng ném exception, thông
-  thường, exception gặp đầu tiên sẽ được ném ra, lúc này các exception
-  trong khối finally sẽ được suppressed, để in tất cả chúng ta có thể
-  gọi exception.getSuppressed()
+* As said, when an exception is encountered, the coroutine will look for the code in the block
+  finally to run, so if the code in finally also throws an exception, via
+  Usually, the first exception encountered will be thrown, this time the exception
+  in the finally block will be suppressed, to print all we can
+  call exception.getSuppressed()
     * Example: Caught java.io.IOException with suppressed
       [java.lang.ArithmeticException, java.lang.IndexOutOfBoundsException]
 
 ### SupervisorJob
 
-* Thông thường, khi 1 coroutine con xảy ra Exception, tất cả các
-  coroutine con khác cũng sẽ bị stop. Nếu muốn 1 coroutine con có xảy
-  ra Exception thì các coroutine con khác vẫn hoạt động bình thường, ta
-  có thể sử dụng SupervisorJob thay vì Job
-* Khi SupervisorJob cancel thì tất cả con của nó sẽ bị cancel
-* Ngoài ra, ta cũng có supervisorScope, tác dụng của nó tương tự như
+* Normally, when a child coroutine occurs Exception, all
+  Other child coroutines will also be stopped. If you want a coroutine can you happen
+  Exception, the other child coroutines still work normally, ta
+  can use SupervisorJob instead of Job
+* When SupervisorJob cancels, all its children will be canceled
+* In addition, we also have supervisorScope, its effect is similar to
   SupervisorJob
 
 ### viewModelScope
 
 * Following Android Architecture Component - MVVM Architecture
-* Sử dụng viewModelScope trong ViewModel:
-    * Điều này giúp cho bất cứ coroutines nào chạy trong scope này đều
-      được tự động hủy khi ViewModel isCleared mà không cần override
+* Use viewModelScope in ViewModel:
+    * This makes it possible for any coroutines running in this scope
+      is automatically destroyed when ViewModel isCleared without override
       onCleared()
-    * Điều này cũng thuận lợi khi ta muốn hoàn thành coroutines chỉ khi
-      ViewModel hoạt động.
-
---- Demo ViewModelScope ---
-
+    * This is also convenient when we want to complete coroutines only if
+      ViewModel works.
+    
 ### lifecycleScope
 
-* Google cũng giới thiệu thêm một scope tiện dụng được gọi là
-  lifecycleScope, một lifecycleScope được định nghĩa cho mỗi Lifecycle
+* Google also introduced a handy scope called
+  lifecycleScope, one lifecycleScope is defined for each Lifecycle
   object
-* Bất cứ coroutines nào chạy trong scope này đều sẽ cancel khi
+* Any coroutines running in this scope will cancel when
   Lifecycle destroyed
-* Đôi khi chúng ta cần tạo coroutines trong objects với một lifecycle,
-  như activities hay fragments
-* Tất cả coroutines sẽ được cancel tại onDestroy (Activity và Fragment)
-* Ở đây, ta có thêm 3 builder mới:
-    * launchWhenCreated: khi có những long running task chỉ xảy ra trong
-      lifecycle của activity hoặc fragment, coroutine này sẽ chạy khi
-      activity hoặc fragment created vào lần đầu tiên
-    * launchWhenStarted: coroutine này sẽ chạy khi activity hoặc fragment
+* Sometimes we need to create coroutines in objects with a lifecycle,
+  like activities or fragments
+* All coroutines will be canceled at onDestroy (Activity and Fragment)
+* Here, we have 3 new builders:
+    * launchWhenCreated: when there are long running tasks that only happen in
+      lifecycle of activity or fragment, this coroutine will run when
+      activity or fragment created for the first time
+    * launchWhenStarted: this coroutine will run when activity or fragment
       started
-    * launchWhenResumed: chạy coroutine ngay khi app is up and running
-
---- Demo LifecycleScope ---
-
+    * launchWhenResumed: run coroutine as soon as the app is up and running
+    
 ### Live Data Builder
 
-* block mới này sẽ tự động thực thi khi live data hoạt động, nó tự động
-  quyết định khi nào stop và cancel coroutines bên trong nó dựa trên
+* this block will automatically execute when live data is active, it's automatic
+  decide when to stop and cancel coroutines inside it based on
   lifecycle owner.
-* Bên trong Live Data building block, ta có thể sử dụng emit() function
-  để set value cho LiveData
-
---- Demo Livedata Builder ---
+* Inside Live Data building block, we can use emit() function
+  to set value for LiveData
