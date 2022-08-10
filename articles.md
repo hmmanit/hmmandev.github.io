@@ -1,6 +1,6 @@
 ---
-title: Blogs
-layout: blogs
+title: Articles
+layout: articles
 description: 
 image: assets/images/pic07.jpg
 nav-menu: true

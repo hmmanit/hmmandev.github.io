@@ -1,6 +1,6 @@
 ---
 title: Projects
-layout: blogs
+layout: articles
 description:
 image: assets/images/pic03.jpg
 nav-menu: true
