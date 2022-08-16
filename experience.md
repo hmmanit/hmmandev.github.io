@@ -54,7 +54,7 @@ nav-menu: true
 		<div class="content">
 			<div class="inner">
 				<header class="major">
-					<h3>Samsung Electronics</h3>Nov 2019 - Feb 2021
+					<h3>Samsung HCMC R&D Center</h3>Nov 2019 - Feb 2021
                     <h4>Android Developer</h4>
 				</header>
                 <h5>Project: SmartThings – TV Plugin</h5>

@@ -1,6 +1,6 @@
 ---
 layout: work
-title: Samsung Electronics
+title: Samsung HCMC R&D Center
 description: Android Developer
 image: 
 show_tile: false
