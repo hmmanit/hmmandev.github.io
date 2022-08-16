@@ -19,13 +19,12 @@ nav-menu: true
 <!-- Elements -->
 <h2 id="elements">Skills</h2>
 <div class="row 200%">
-	<div class="9u 12u$(medium)">
+	<div class="8u 12u$(medium)">
 
 <div class="table-wrapper">
 	<table>
 		<thead>
 			<tr>
-				<th>Languages</th>
 				<th>Android Jetpack</th>
 				<th>3rd party libraries</th>
 				<th>Others</th>
@@ -33,55 +32,46 @@ nav-menu: true
 		</thead>
 		<tbody>
 			<tr>
-				<td>Kotlin</td>
 				<td>ViewModel</td>
 				<td>Material components</td>
 				<td>Clean Architecture</td>
 			</tr>
 			<tr>
-				<td>Java</td>
 				<td>LiveData</td>
 				<td>Retrofit</td>
 				<td>UI design</td>
 			</tr>
 			<tr>
-				<td></td>
 				<td>Navigation</td>
 				<td>Glide - Coil</td>
 				<td>Dark & Light themes supporting</td>
 			</tr>
 			<tr>
-				<td></td>
 				<td>Lifecycles</td>
 				<td>RxJava - Android</td>
 				<td>Multiple screen sizes supporting</td>
 			</tr>
 			<tr>
-				<td></td>
 				<td>Data Binding</td>
 				<td>Kotlin Coroutines</td>
 				<td></td>
 			</tr>
             <tr>
-				<td></td>
 				<td>Room</td>
 				<td></td>
 				<td></td>
 			</tr>
             <tr>
-				<td></td>
 				<td>Animation & Transitions</td>
 				<td></td>
 				<td></td>
 			</tr>
             <tr>
-				<td></td>
 				<td>Hilt</td>
 				<td></td>
 				<td></td>
 			</tr>
             <tr>
-				<td></td>
 				<td>Compose</td>
 				<td></td>
 				<td></td>
@@ -91,7 +81,7 @@ nav-menu: true
 </div>
 
 </div>
-<div class="3u 12u$(medium)">
+<div class="4u 12u$(medium)">
 
 <h2>Personal info</h2>
 Full name: <b>Man Ho Minh</b> <br/>
