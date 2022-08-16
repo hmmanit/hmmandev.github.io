@@ -14,38 +14,6 @@ nav-menu: true
 
 	<section>
 
-		<a href="2021/09/18/kotlin_dsl.html" class="image">
-
-			<img src="{% link assets/images/kotlin_dsl.webp %}" alt="" data-position="center center" />
-
-		</a>
-
-		<div class="content">
-
-			<div class="inner">
-
-				<header class="major">
-
-					<h3>Kotlin DSL</h3>
-
-				</header>
-
-				<p>Exploring Kotlin DSL. Migrate build scripts from Groovy to Kotlin DSL</p>
-
-				<ul class="actions">
-
-					<li><a href="2021/09/18/kotlin_dsl.html" class="button">Learn more</a></li>
-
-				</ul>
-
-			</div>
-
-		</div>
-
-	</section>
-
-	<section>
-
 		<a href="2020/12/24/clean_architecture.html" class="image">
 
 			<img src="{% link assets/images/clean_architecture.webp %}" alt="" data-position="top center" />
