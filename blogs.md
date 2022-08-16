@@ -2,7 +2,7 @@
 title: Blogs
 layout: blogs
 description: 
-image: assets/images/pic07.jpg
+image: assets/images/background_blogs.jpg
 nav-menu: true
 ---
 
