@@ -2,7 +2,7 @@
 title: Projects
 layout: blogs
 description:
-image: assets/images/pic03.jpg
+image: assets/images/background_projects.webp
 nav-menu: true
 ---
 
