@@ -14,7 +14,7 @@ nav-menu: true
 
     <section>
 
-		<a href="2020/12/24/clean_architecture.html" class="image">
+		<a href="clean-architecture" class="image">
 
 			<img src="{% link assets/images/clean_architecture.webp %}" alt="" data-position="top center" />
 
@@ -34,7 +34,7 @@ nav-menu: true
 
 				<ul class="actions">
 
-					<li><a href="2020/12/24/clean_architecture.html" class="button">Learn more</a></li>
+					<li><a href="clean-architecture" class="button">Learn more</a></li>
 
 				</ul>
 
@@ -46,7 +46,7 @@ nav-menu: true
 
 	<section>
 
-		<a href="2020/05/17/coroutines.html" class="image">
+		<a href="coroutines" class="image">
 
 			<img src="{% link assets/images/kotlin_coroutines.webp %}" alt="" data-position="25% 25%" />
 
@@ -66,7 +66,7 @@ nav-menu: true
 
 				<ul class="actions">
 
-					<li><a href="2020/05/17/coroutines.html" class="button">Learn more</a></li>
+					<li><a href="coroutines" class="button">Learn more</a></li>
 
 				</ul>
 

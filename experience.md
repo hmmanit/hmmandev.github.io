@@ -8,7 +8,7 @@ nav-menu: true
 
 <section id="two" class="spotlights">
 	<section>
-		<a href="experience/anyses.html" class="image">
+		<a href="anyses" class="image">
 			<img src="{% link assets/images/anyses.webp %}" alt="" data-position="center center" />
 		</a>
 		<div class="content">
@@ -22,13 +22,13 @@ nav-menu: true
                     Participating in projects on attendance, order management, site management,...
                 </p>
 				<ul class="actions">
-					<li><a href="experience/anyses.html" class="button">Read more</a></li>
+					<li><a href="anyses" class="button">Read more</a></li>
 				</ul>
 			</div>
 		</div>
 	</section>
 	<section>
-		<a href="experience/rch.html" class="image">
+		<a href="rch" class="image">
 			<img src="{% link assets/images/rch.webp %}" alt="" data-position="top center" />
 		</a>
 		<div class="content">
@@ -42,13 +42,13 @@ nav-menu: true
                     Applications for equipment manufactured by the company such as: POS machines, monitors, printers,...
                 </p>
 				<ul class="actions">
-					<li><a href="experience/rch.html" class="button">Read more</a></li>
+					<li><a href="rch" class="button">Read more</a></li>
 				</ul>
 			</div>
 		</div>
 	</section>
 	<section>
-		<a href="experience/samsung.html" class="image">
+		<a href="samsung" class="image">
 			<img src="{% link assets/images/samsung.webp %}" alt="" data-position="25% 25%" />
 		</a>
 		<div class="content">
@@ -62,13 +62,13 @@ nav-menu: true
                     One of SmartThings sub-applications, developed to help users use and control the TV smarter and more convenient.
                 </p>
 				<ul class="actions">
-					<li><a href="experience/samsung.html" class="button">Read more</a></li>
+					<li><a href="samsung" class="button">Read more</a></li>
 				</ul>
 			</div>
 		</div>
 	</section>
     <section>
-		<a href="experience/tma.html" class="image">
+		<a href="tma" class="image">
 			<img src="{% link assets/images/tma.webp %}" alt="" data-position="25% 25%" />
 		</a>
 		<div class="content">
@@ -84,7 +84,7 @@ nav-menu: true
                     R&D project, a system for managing vagrant boxes, creating courses and setting up a development environment automatically.
                 </p>
 				<ul class="actions">
-					<li><a href="experience/tma.html" class="button">Read more</a></li>
+					<li><a href="tma" class="button">Read more</a></li>
 				</ul>
 			</div>
 		</div>

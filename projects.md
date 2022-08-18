@@ -14,7 +14,7 @@ nav-menu: true
 
     <section>
 
-		<a href="projects/compose_search_bar.html" class="image">
+		<a href="compose-search-bar" class="image">
 
 			<img src="{% link assets/images/compose_search_bar.webp %}" alt="" data-position="center center" />
 
@@ -34,7 +34,7 @@ nav-menu: true
 
 				<ul class="actions">
 
-					<li><a href="projects/compose_search_bar.html" class="button">Learn more</a></li>
+					<li><a href="compose-search-bar" class="button">Learn more</a></li>
 
 				</ul>
 
@@ -46,7 +46,7 @@ nav-menu: true
 
     <section>
 
-		<a href="projects/compose_charts.html" class="image">
+		<a href="compose-charts" class="image">
 
 			<img src="{% link assets/images/compose_charts.webp %}" alt="" data-position="center center" />
 
@@ -66,7 +66,7 @@ nav-menu: true
 
 				<ul class="actions">
 
-					<li><a href="projects/compose_charts.html" class="button">Learn more</a></li>
+					<li><a href="compose-charts" class="button">Learn more</a></li>
 
 				</ul>
 
@@ -78,7 +78,7 @@ nav-menu: true
 
     <section>
 
-        <a href="projects/styleable_seek_bar.html" class="image">
+        <a href="styleable-seek-bar" class="image">
 
 			<img src="{% link assets/images/styleable_seek_bar.webp %}" alt="" data-position="25% 25%" />
 
@@ -98,7 +98,7 @@ nav-menu: true
 
 				<ul class="actions">
 
-					<li><a href="projects/styleable_seek_bar.html" class="button">Learn more</a></li>
+					<li><a href="styleable-seek-bar" class="button">Learn more</a></li>
 
 				</ul>
 
@@ -110,7 +110,7 @@ nav-menu: true
 
 	<section>
 
-		<a href="projects/lined_edit_text.html" class="image">
+		<a href="lined-edit-text" class="image">
 
 			<img src="{% link assets/images/lined_edit_text.webp %}" alt="" data-position="center center" />
 
@@ -130,7 +130,7 @@ nav-menu: true
 
 				<ul class="actions">
 
-					<li><a href="projects/lined_edit_text.html" class="button">Learn more</a></li>
+					<li><a href="lined-edit-text" class="button">Learn more</a></li>
 
 				</ul>
 
@@ -142,7 +142,7 @@ nav-menu: true
 
 	<section>
 
-        <a href="projects/auto_dimensions.html" class="image">
+        <a href="auto-dimensions" class="image">
 
 			<img src="{% link assets/images/auto_dimensions.webp %}" alt="" data-position="top center" />
 
@@ -162,7 +162,7 @@ nav-menu: true
 
 				<ul class="actions">
 
-					<li><a href="projects/auto_dimensions.html" class="button">Learn more</a></li>
+					<li><a href="auto-dimensions" class="button">Learn more</a></li>
 
 				</ul>
 
@@ -174,7 +174,7 @@ nav-menu: true
 
 	<section>
 
-        <a href="projects/flex_image_view.html" class="image">
+        <a href="flex-image-view" class="image">
 
 			<img src="{% link assets/images/flex_image_view.webp %}" alt="" data-position="25% 25%" />
 
@@ -194,7 +194,7 @@ nav-menu: true
 
 				<ul class="actions">
 
-					<li><a href="projects/flex_image_view.html" class="button">Learn more</a></li>
+					<li><a href="flex-image-view" class="button">Learn more</a></li>
 
 				</ul>
 
