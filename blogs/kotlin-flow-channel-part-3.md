@@ -5,7 +5,7 @@ description: Channels & operators
 image: assets/images/clean_architecture.webp
 show_tile: false
 ---
-#Table of contents
+## Table of contents
 - [Channel](#channel)
     - [Channel types](#channel-types)
     - [Difference between SendChannel.close() and ReceiveChannel.cancel()](#difference-between-sendchannelclose-and-receivechannelcancel)
@@ -14,6 +14,11 @@ show_tile: false
     - [Immediate operators](#immediate-operators)
     - [Terminal operators](#terminal-operators)
 - [Conclusion](#conclusion)
+
+## All parts of this article
+* [Kotlin Flow & Channel - Part 1: Streams & Flow](/man-hominh/blogs/kotlin-flow-channel-part-1){:target="_blank"}
+* [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/man-hominh/blogs/kotlin-flow-channel-part-2){:target="_blank"}
+* [Kotlin Flow & Channel - Part 3: Channels & operators](/man-hominh/blogs/kotlin-flow-channel-part-3){:target="_blank"}
 
 ## Channel
 
@@ -246,3 +251,7 @@ show_tile: false
 Those are the basics when we start moving from Rx and LiveData to Kotlin coroutines and flows, in
 the next article, I will go through and explain common operators or will be used in some specific
 cases. It will be soon!
+
+* Related articles: 
+  * [Kotlin Flow & Channel - Part 1: Streams & Flow](/man-hominh/blogs/kotlin-flow-channel-part-1){:target="_blank"}
+  * [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/man-hominh/blogs/kotlin-flow-channel-part-2){:target="_blank"}

@@ -5,10 +5,15 @@ description: StateFlow & SharedFlow
 image: assets/images/clean_architecture.webp
 show_tile: false
 ---
-#Table of contents
+## Table of contents
 - [StateFlow](#stateflow)
 - [SharedFlow](#sharedflow)
 - [Conclusion](#conclusion)
+
+## All parts of this article
+* [Kotlin Flow & Channel - Part 1: Streams & Flow](/man-hominh/blogs/kotlin-flow-channel-part-1){:target="_blank"}
+* [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/man-hominh/blogs/kotlin-flow-channel-part-2){:target="_blank"}
+* [Kotlin Flow & Channel - Part 3: Channels & operators](/man-hominh/blogs/kotlin-flow-channel-part-3){:target="_blank"}
 
 ## StateFlow
 
@@ -94,4 +99,6 @@ show_tile: false
 
 * It's about StateFlow and SharedFlow (hot streams), in the next article, we will talk about
   Channel to see the difference between them ;)
-* Let's start with Part 3: 
+* Related articles: 
+  * [Kotlin Flow & Channel - Part 1: Streams & Flow](/man-hominh/blogs/kotlin-flow-channel-part-1){:target="_blank"}
+  * [Kotlin Flow & Channel - Part 3: Channels & operators](/man-hominh/blogs/kotlin-flow-channel-part-3){:target="_blank"}

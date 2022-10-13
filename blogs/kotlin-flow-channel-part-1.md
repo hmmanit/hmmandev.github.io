@@ -5,12 +5,18 @@ description: Streams and Flow
 image: assets/images/kotlin-flow.webp
 show_tile: false
 ---
-#Table of contents
+
+## Table of contents
 - [Streams](#streams-hot---cold-streams)
     - [Cold streams](#cold-streams)
     - [Hot streams](#hot-streams)
 - [Flow](#flow)
 - [Conclusion](#conclusion)
+
+## All parts of this article
+* [Kotlin Flow & Channel - Part 1: Streams & Flow](/man-hominh/blogs/kotlin-flow-channel-part-1){:target="_blank"}
+* [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/man-hominh/blogs/kotlin-flow-channel-part-2){:target="_blank"}
+* [Kotlin Flow & Channel - Part 3: Channels & operators](/man-hominh/blogs/kotlin-flow-channel-part-3){:target="_blank"}
 
 ## Streams/ Hot - Cold streams
 
@@ -79,4 +85,6 @@ Streams concept, types of streams and its properties.
 
 * It's about streams and Flow (cold stream), in the next article, we will talk about StateFlow and
 SharedFlow to see the difference between them ;)
-* Let's start with Part 2: 
+* Related articles: 
+  * [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/man-hominh/blogs/kotlin-flow-channel-part-2){:target="_blank"}
+  * [Kotlin Flow & Channel - Part 3: Channels & operators](/man-hominh/blogs/kotlin-flow-channel-part-3){:target="_blank"}
