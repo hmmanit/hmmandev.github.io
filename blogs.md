@@ -14,6 +14,38 @@ nav-menu: true
 
     <section>
 
+		<a href="kotlin-flow-channel-part-1" class="image">
+
+			<img src="{% link assets/images/kotlin-flow.webp %}" alt="" data-position="top center" />
+
+		</a>
+
+		<div class="content">
+
+			<div class="inner">
+
+				<header class="major">
+
+					<h3>Kotlin flow - channel: Part 1</h3>
+
+				</header>
+
+				<p>Streams and flows</p>
+
+				<ul class="actions">
+
+					<li><a href="kotlin-flow-channel-part-1" class="button">Learn more</a></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</section>
+
+    <section>
+
 		<a href="clean-architecture" class="image">
 
 			<img src="{% link assets/images/clean_architecture.webp %}" alt="" data-position="top center" />
