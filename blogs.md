@@ -108,38 +108,6 @@ nav-menu: true
 
 	</section>
 
-    <section>
-
-		<a href="clean-architecture" class="image">
-
-			<img src="{% link assets/images/clean_architecture.webp %}" alt="" data-position="top center" />
-
-		</a>
-
-		<div class="content">
-
-			<div class="inner">
-
-				<header class="major">
-
-					<h3>Clean Architecture</h3>
-
-				</header>
-
-				<p>Clean Architecture in Android Development</p>
-
-				<ul class="actions">
-
-					<li><a href="clean-architecture" class="button">Learn more</a></li>
-
-				</ul>
-
-			</div>
-
-		</div>
-
-	</section>
-
 	<section>
 
 		<a href="coroutines" class="image">
