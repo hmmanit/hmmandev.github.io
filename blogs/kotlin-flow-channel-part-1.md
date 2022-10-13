@@ -2,7 +2,7 @@
 layout: article
 title: Kotlin Flow & Channel - Part 1
 description: Streams and Flow
-image: assets/images/clean_architecture.webp
+image: assets/images/kotlin-flow.webp
 show_tile: false
 ---
 #Table of contents
@@ -77,6 +77,6 @@ Streams concept, types of streams and its properties.
     
 ## Conclusion
 
-* It's about streams and flow (cold stream), in the next article, we will talk about StateFlow and
+* It's about streams and Flow (cold stream), in the next article, we will talk about StateFlow and
 SharedFlow to see the difference between them ;)
 * Let's start with Part 2: 
