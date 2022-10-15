@@ -14,6 +14,38 @@ nav-menu: true
 
     <section>
 
+		<a href="flows-lifecycle-aware" class="image">
+
+			<img src="{% link assets/images/flow_lifecycle_aware.png %}" alt="" data-position="top center" />
+
+		</a>
+
+		<div class="content">
+
+			<div class="inner">
+
+				<header class="major">
+
+					<h3>Flows lifecycle-aware</h3>
+
+				</header>
+
+				<p>Collect flows with Lifecycle-aware components</p>
+
+				<ul class="actions">
+
+					<li><a href="flows-lifecycle-aware" class="button">Learn more</a></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</section>
+
+    <section>
+
 		<a href="kotlin-flow-channel-part-3" class="image">
 
 			<img src="{% link assets/images/kotlin-flow.webp %}" alt="" data-position="top center" />
