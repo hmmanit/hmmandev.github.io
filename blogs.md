@@ -14,6 +14,38 @@ nav-menu: true
 
     <section>
 
+		<a href="github-actions" class="image">
+
+			<img src="{% link assets/images/github_actions.webp %}" alt="" data-position="top center" />
+
+		</a>
+
+		<div class="content">
+
+			<div class="inner">
+
+				<header class="major">
+
+					<h3>GitHub Actions</h3>
+
+				</header>
+
+				<p>Android CI/CD with GitHub Actions</p>
+
+				<ul class="actions">
+
+					<li><a href="github-actions" class="button">Learn more</a></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</section>
+
+    <section>
+
 		<a href="flows-lifecycle-aware" class="image">
 
 			<img src="{% link assets/images/flow_lifecycle_aware.png %}" alt="" data-position="top center" />
