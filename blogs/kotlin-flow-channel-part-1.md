@@ -15,9 +15,9 @@ show_tile: false
 - [Conclusion](#conclusion)
 
 ## All parts of this article
-* [Kotlin Flow & Channel - Part 1: Streams & Flow](/man-hominh/blogs/kotlin-flow-channel-part-1){:target="_blank"}
-* [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/man-hominh/blogs/kotlin-flow-channel-part-2){:target="_blank"}
-* [Kotlin Flow & Channel - Part 3: Channels & operators](/man-hominh/blogs/kotlin-flow-channel-part-3){:target="_blank"}
+* [Kotlin Flow & Channel - Part 1: Streams & Flow](/blogs/kotlin-flow-channel-part-1){:target="_blank"}
+* [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/blogs/kotlin-flow-channel-part-2){:target="_blank"}
+* [Kotlin Flow & Channel - Part 3: Channels & operators](/blogs/kotlin-flow-channel-part-3){:target="_blank"}
 
 ## Example source code
 [GitHub](https://github.com/homanad/Flow-Channel){:target="_blank"}
@@ -90,5 +90,5 @@ Streams concept, types of streams and its properties.
 * It's about streams and Flow (cold stream), in the next article, we will talk about StateFlow and
 SharedFlow to see the difference between them ;)
 * Related articles: 
-  * [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/man-hominh/blogs/kotlin-flow-channel-part-2){:target="_blank"}
-  * [Kotlin Flow & Channel - Part 3: Channels & operators](/man-hominh/blogs/kotlin-flow-channel-part-3){:target="_blank"}
+  * [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/blogs/kotlin-flow-channel-part-2){:target="_blank"}
+  * [Kotlin Flow & Channel - Part 3: Channels & operators](/blogs/kotlin-flow-channel-part-3){:target="_blank"}

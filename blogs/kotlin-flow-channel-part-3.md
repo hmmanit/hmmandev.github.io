@@ -17,9 +17,9 @@ show_tile: false
 - [Conclusion](#conclusion)
 
 ## All parts of this article
-* [Kotlin Flow & Channel - Part 1: Streams & Flow](/man-hominh/blogs/kotlin-flow-channel-part-1){:target="_blank"}
-* [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/man-hominh/blogs/kotlin-flow-channel-part-2){:target="_blank"}
-* [Kotlin Flow & Channel - Part 3: Channels & operators](/man-hominh/blogs/kotlin-flow-channel-part-3){:target="_blank"}
+* [Kotlin Flow & Channel - Part 1: Streams & Flow](/blogs/kotlin-flow-channel-part-1){:target="_blank"}
+* [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/blogs/kotlin-flow-channel-part-2){:target="_blank"}
+* [Kotlin Flow & Channel - Part 3: Channels & operators](/blogs/kotlin-flow-channel-part-3){:target="_blank"}
 
 ## Example source code
 [GitHub](https://github.com/homanad/Flow-Channel){:target="_blank"}
@@ -257,5 +257,5 @@ the next article, I will go through and explain common operators or will be used
 cases. It will be soon!
 
 * Related articles: 
-  * [Kotlin Flow & Channel - Part 1: Streams & Flow](/man-hominh/blogs/kotlin-flow-channel-part-1){:target="_blank"}
-  * [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/man-hominh/blogs/kotlin-flow-channel-part-2){:target="_blank"}
+  * [Kotlin Flow & Channel - Part 1: Streams & Flow](/blogs/kotlin-flow-channel-part-1){:target="_blank"}
+  * [Kotlin Flow & Channel - Part 2: StateFlow & SharedFlow](/blogs/kotlin-flow-channel-part-2){:target="_blank"}
